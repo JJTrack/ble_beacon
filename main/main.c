@@ -27,6 +27,7 @@ static int ble_gap_event(struct ble_gap_event *event, void *arg)
         ble_app_advertise();
         break;
     case BLE_GAP_EVENT_ADV_COMPLETE:
+        vTaskDelay(10000/portTICK_PERIOD_MS);
         ESP_LOGI("GAP", "BLE_GAP_EVENT_ADV_COMPLETE");
         ble_app_advertise();
         break;
@@ -60,7 +61,7 @@ void ble_app_advertise(void)
     adv_params.disc_mode = BLE_GAP_DISC_MODE_GEN;
     adv_params.itvl_max = 320;
     adv_params.itvl_min = 320;
-    ble_gap_adv_start(ble_addr_type, NULL, BLE_HS_FOREVER, &adv_params, ble_gap_event, NULL);
+    ble_gap_adv_start(ble_addr_type, NULL, 5000, &adv_params, ble_gap_event, NULL);
 }
 
 void ble_app_on_sync(void)
