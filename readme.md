@@ -1,5 +1,5 @@
 
-# ESP32 Starter template
+# Bluetooth Low-Energy Beacon Repository
 
 ## Quick overview
 
